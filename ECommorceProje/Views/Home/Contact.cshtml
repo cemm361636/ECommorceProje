@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "İletişim";
+}
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title</h2>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <h3>
+                Adres Bilgilerimiz
+            </h3>
+            <address>
+                Her türlü görüş, öneri ve siparişlerinize ait sorularınız için Ultras@gmail.com'a e-posta gönderebilirsiniz.
+                Adres: İstanbul/Bayrampaşa
+                Çağrı Merkezi: 0535 775 75 55
+
+                WHATSAPP SİPARİŞ VE DESTEK: 0535 775 75 55
+
+                Çağrı merkezimiz hafta içi 08:00 - 19:00, Cumartesi 09:00 - 16:00 saatleri arasında hizmet vermektedir.
+                Müşteri Hizmetleri E-posta Adresi: axbutikdestek@gmail.com
+                <br />
+                <abbr title="Phone">Telefon:</abbr>
+                0535 775 75 55
+            </address>
+
+            <hr />
+            <h3>
+                Harita Bilgilerimiz
+            </h3>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.095105412389!2d28.99570407551702!3d41.06691371581312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7913b7b9b3f%3A0x154c9d69c759851e!2zSW5mb3RlY2ggQWNhZGVteSBZYXrEsWzEsW0gS3Vyc3UgKMWeacWfbGkvTWVjaWRpeWVrw7Z5IMWedWJlKQ!5e0!3m2!1sen!2sus!4v1706440031966!5m2!1sen!2sus" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="col">
+            <h3>
+                Bize Mesaj Gönderin
+            </h3>
+            @await Html.PartialAsync("_PartialContact")
+        </div>
+    </div>
+</main>

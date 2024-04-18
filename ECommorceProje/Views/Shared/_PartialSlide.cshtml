@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Slide>
+
+<div id="carouselExampleCaptions" class="carousel slide">
+
+    <div class="carousel-inner">
+
+        @foreach (var item in Model)
+        {
+            <div class="carousel-item @(item == Model.First() ? "active" : "")">
+                <img src="/Images/@item.Image" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>@item.Title</h5>
+                    <p>@item.Description</p>
+                </div>
+            </div>
+        }
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

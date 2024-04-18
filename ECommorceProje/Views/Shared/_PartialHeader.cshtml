@@ -1,0 +1,83 @@
+﻿@using ECommorceProje.ExtensionMethods
+<header id="header">
+    <div id="header-wrap">
+        <nav class="primary-nav padding-small">
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="main-logo">
+                            <a href="/">
+                                <img src="~/homepage/images/main-logo.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <div id="main-nav" class="stellarnav d-flex justify-content-end right">
+                        <ul class="menu-list" style="display: flex;">
+                            <li class="menu-item has-sub">
+                                <a href="/" class="item-anchor d-flex align-item-center" data-effect="Home">Ana Sayfa</a>
+                            </li>
+                            @await Component.InvokeAsync("Categories")
+                            <li><a href="/hakkimizda" class="item-anchor" data-effect="About">Hakkımızda</a></li>
+                            <li><a href="/iletisim" class="item-anchor" data-effect="Contact">İletişim</a></li>
+                            <li style="display: flex; align-items: center;">
+                                <div class="text-end d-flex align-items-center">
+                                    <!-- Değişiklik burada -->
+                                    <a asp-controller="Account" asp-action="Login">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>
+                                            Giriş
+                                        </span>
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        <span>
+                                            Çıkış
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li style="display: flex; align-items: center;">
+                                <form asp-controller="Products" asp-action="Search" method="get" class="col-5 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                                    <input name="q" type="search" class="form-control form-control-dark" placeholder="Ürün, Kategori veya Marka Ara..." aria-label="Search">
+                                </form>
+                                <div class="dropdown">
+                                    <!-- Değişiklik burada -->
+                                    @{
+                                        Cart cart = Context.Session.GetJson<Cart>("Cart");
+                                        if (cart != null)
+                                        {
+                                            <a class="btn btn-outline-primary me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <!-- Değişiklik burada -->
+                                                <i class="bi-cart-fill me-1"></i> Sepet
+                                                <span class="badge bg-dark text-white ms-1 rounded-pill">@cart.Products.Count</span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                @foreach (var item in cart.Products)
+                                                {
+                                                    <li>
+                                                        <a class="dropdown-item" href="/Products/Detail/@item.Product.Id">
+                                                            <img src="/Images/@item.Product.Image" alt="" width="34" />
+                                                            @item.Product.Name
+                                                        </a>
+                                                    </li>
+                                                }
+                                                <li class="text-center mt-2"><a class="btn btn-success" asp-controller="Cart" asp-action="Index">Sepete Git</a></li>
+                                            </ul>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-outline-dark btn-sm me-2" href="/Cart">
+                                                <!-- Değişiklik burada -->
+                                                <i class="bi-cart-fill me-1"></i>
+                                                Sepet
+                                                <span class="badge bg-primary text-white ms-1 rounded-pill">0</span>
+                                            </a>
+                                        }
+                                    }
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

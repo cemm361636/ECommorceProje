@@ -1,0 +1,11 @@
+﻿@model Category
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h2>@Model.Name</h2>
+
+<div class="row row-cols-3">
+    <partial name="_PartialProductView" model="Model.Products" />
+</div>

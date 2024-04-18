@@ -1,0 +1,29 @@
+﻿@model Entities.RegisterViewModel
+
+<body>
+    <section class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+                <h1 class="opacity">KAYIT OL</h1>
+                <form asp-action="Register" asp-controller="Account" method="post">
+                    <input asp-for="FirstName" placeholder="Ad" />
+                    <input asp-for="LastName" placeholder="Soyad" />
+                    <input asp-for="Email" placeholder="E-posta" />
+                    <input asp-for="Password" type="password" placeholder="Şifre" />
+                    <input asp-for="ConfirmPassword" type="password" placeholder="Şifreyi Tekrar Girin" />
+                    <button type="submit">Kayıt Ol</button>
+                </form>
+                <div class="register-forget opacity">
+                    <a href="/Account/Login">GİRİŞ YAP</a>
+                    <a href="">ŞİFREMİ UNUTTUM</a>
+                </div>
+            </div>
+            <div class="circle circle-two"></div>
+        </div>
+        <div class="theme-btn-container"></div>
+    </section>
+</body>
+<script src="~/glassmorphism-login/src/script.js"></script>
+<link href="~/glassmorphism-login/src/style.css" rel="stylesheet" />

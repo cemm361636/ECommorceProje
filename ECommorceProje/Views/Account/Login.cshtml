@@ -1,21 +1,26 @@
 ﻿@model Entities.LoginViewModel
 <body>
+
     <section class="container">
         <div class="login-container">
             <div class="circle circle-one"></div>
-            <div class="form-container">
-                class="illustration" />
-                <h1 class="opacity">GİRİŞ YAP</h1>
+            <div class="form-container" style="width: 150%;">
+                <h1 class="opacity">Giriş Yap</h1>
                 <form asp-action="Login" asp-controller="Account" method="post">
                     <input asp-for="Email" type="email" placeholder="E-posta" />
                     <input asp-for="Password" type="password" placeholder="Şifre" />
                     <button type="submit" class="opacity">Giriş Yap</button>
                 </form>
                 <div class="register-forget opacity">
-                    <a href="/Account/Register">KAYIT OL</a>
-                    <a href="">ŞİFREMİ UNUTTUM</a>
+                    <div>
+                        <a href="/Account/Register">Kayıt Ol</a>
+                    </div>
+                    <div>
+                        <a href="">Şifremi Unuttum</a>
+                    </div>
                 </div>
             </div>
+
             <div class="circle circle-two"></div>
         </div>
         <div class="theme-btn-container"></div>
@@ -23,6 +28,3 @@
 </body>
 <script src="~/glassmorphism-login/src/script.js"></script>
 <link href="~/glassmorphism-login/src/style.css" rel="stylesheet" />
-
-
-

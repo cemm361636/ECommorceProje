@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = Context.Request.Query["q"] + " Arama Sonuçları";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+            <div class="card h-100">
+                <a href="/Products/Detail/@product.Id" class="text-decoration-none">
+                    <img src="/Images/@product.Image" alt="@product.Name" class="card-img-top img-fluid" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+</div>

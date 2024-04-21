@@ -38,5 +38,9 @@ namespace ECommorceProje.Controllers
             }
             return View(model);
         }
+        public async Task<IActionResult> Search(string q)
+        {
+            return View(await _dbContext.Products.Where(p => p.IsActive && p.Name.Contains(q)).Include("Category").ToListAsync());
+        }
     }
 }

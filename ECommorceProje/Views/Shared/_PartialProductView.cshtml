@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<Product>
 
-@foreach (var item in Model.Where(x => x.IsHome))
+@foreach (var item in Model.Where(x => x.IsActive && x.IsHome))
 {
     <div class="col">
-        <a href="/Products/Detail/@item?.Id"  class="text-decoration-none">
+        <a href="/Products/Detail/@item?.Id" class="text-decoration-none">
             <div class="card shadow-sm">
-                <img src="/Images/@item.Image" />
+                <div class="image-container d-flex justify-content-center align-items-center" style="width: 350px; height: 350px; overflow: hidden;">
+                    <img src="/Images/@item.Image" style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
                 <div class="card-body">
                     <p class="card-text">
                         @item.Name

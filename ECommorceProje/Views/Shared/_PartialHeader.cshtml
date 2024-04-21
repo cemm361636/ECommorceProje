@@ -14,70 +14,90 @@
                     <div id="main-nav" class="stellarnav d-flex justify-content-end right">
                         <ul class="menu-list" style="display: flex;">
                             <li class="menu-item has-sub">
-                                <a href="/" class="item-anchor d-flex align-item-center" data-effect="Home">Ana Sayfa</a>
+                                <div class="item-anchor d-flex align-item-center" data-effect="Home">
+                                    <a href="/">Ana Sayfa</a>
+                                </div>
                             </li>
-                            @await Component.InvokeAsync("Categories")
-                            <li><a href="/hakkimizda" class="item-anchor" data-effect="About">Hakkımızda</a></li>
-                            <li><a href="/iletisim" class="item-anchor" data-effect="Contact">İletişim</a></li>
-                            <li style="display: flex; align-items: center;">
+                            
+                                @await Component.InvokeAsync("Categories")
+                           
+                            
+                            <li>
+                                <div class="item-anchor" data-effect="About">
+                                    <a href="/hakkimizda">Hakkımızda</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-anchor" data-effect="Contact">
+                                    <a href="/iletisim">İletişim</a>
+                                </div>
+                            </li>
+                            <li>
                                 <div class="text-end d-flex align-items-center">
-                                    <!-- Değişiklik burada -->
                                     <a asp-controller="Account" asp-action="Login">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span>
-                                            Giriş
-                                        </span>
+                                        <span>Giriş Yap</span>
+                                    </a>
+                                    <a asp-controller="Account" asp-action="Logout">
                                         <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                        <span>
-                                            Çıkış
-                                        </span>
+                                        <span>Çıkış Yap</span>
                                     </a>
                                 </div>
                             </li>
-                            <li style="display: flex; align-items: center;">
+                            <li>
                                 <form asp-controller="Products" asp-action="Search" method="get" class="col-5 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                                     <input name="q" type="search" class="form-control form-control-dark" placeholder="Ürün, Kategori veya Marka Ara..." aria-label="Search">
                                 </form>
-                                <div class="dropdown">
-                                    <!-- Değişiklik burada -->
-                                    @{
-                                        Cart cart = Context.Session.GetJson<Cart>("Cart");
-                                        if (cart != null)
-                                        {
-                                            <a class="btn btn-outline-primary me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <!-- Değişiklik burada -->
-                                                <i class="bi-cart-fill me-1"></i> Sepet
-                                                <span class="badge bg-dark text-white ms-1 rounded-pill">@cart.Products.Count</span>
+                            <li>
+                                <div class="dropdown" style="margin-top: -20px;">
+                                    <!-- Sepet div'i -->
+                                        @{
+                                            Cart cart = Context.Session.GetJson<Cart>("Cart");
+                                            if (cart != null)
+                                            {
+                                            <div class="btn-group">
+                                                <!-- Düğmelerin grubunu oluşturmak için -->
+                                                <a class="btn btn-light me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-cart-fill me-1" aria-hidden="true" style="font-size: 2rem;"></i> <!-- Sepet simgesine boyut ekle -->
+                                                    <span class="badge bg-dark text-white ms-1 rounded-pill" style="font-size: 1.250rem;">@cart.Products.Count</span> <!-- Sayıya boyut ekle -->
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                        @foreach (var item in cart.Products)
+                                                        {
+                                                        <li>
+                                                            <a class="dropdown-item" href="/Products/Detail/@item.Product.Id">
+                                                                <img src="/Images/@item.Product.Image" alt="" width="50" />
+                                                                    @item.Product.Name
+                                                            </a>
+                                                        </li>
+                                                        }
+                                                    <li class="text-center mt-2"><a class="btn btn-success" asp-controller="Cart" asp-action="Index">Sepete Git</a></li>
+                                                </ul>
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                            <a class="btn btn-light btn-sm me-2" href="/Cart">
+                                                <i class="bi bi-cart-fill me-1" aria-hidden="true" style="font-size: 2rem;"></i> <!-- Sepet simgesine boyut ekle -->
+                                                <span class="badge bg-primary text-white ms-1 rounded-pill" style="font-size: 1.250rem;">0</span> <!-- Sayıya boyut ekle -->
                                             </a>
-                                            <ul class="dropdown-menu">
-                                                @foreach (var item in cart.Products)
-                                                {
-                                                    <li>
-                                                        <a class="dropdown-item" href="/Products/Detail/@item.Product.Id">
-                                                            <img src="/Images/@item.Product.Image" alt="" width="34" />
-                                                            @item.Product.Name
-                                                        </a>
-                                                    </li>
-                                                }
-                                                <li class="text-center mt-2"><a class="btn btn-success" asp-controller="Cart" asp-action="Index">Sepete Git</a></li>
-                                            </ul>
+                                            }
                                         }
-                                        else
-                                        {
-                                            <a class="btn btn-outline-dark btn-sm me-2" href="/Cart">
-                                                <!-- Değişiklik burada -->
-                                                <i class="bi-cart-fill me-1"></i>
-                                                Sepet
-                                                <span class="badge bg-primary text-white ms-1 rounded-pill">0</span>
-                                            </a>
-                                        }
-                                    }
                                 </div>
+
+
+                                
                             </li>
+                            
                         </ul>
                     </div>
+                    <hr />
                 </div>
+                
             </div>
+           
         </nav>
     </div>
+   
 </header>
+

@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <th>Kargo</th>
-                    <td>@(Model.TotalPrice() > 999 ? "Ücretsiz" : "69₺")</td>
+                    <td>@(Model.TotalPrice() > 2000 ? "Ücretsiz" : "69₺")</td>
                 </tr>
                 <tr>
                     <th>
@@ -67,7 +67,21 @@
                         @(Model.TotalPrice() > 999 ? Model.TotalPrice().ToString("c") : (Model.TotalPrice() + 69).ToString("c"))
                     </td>
                 </tr>
+                <tr>
+                    <td>
+
+
+                        <form asp-action="RemoveFromCart">
+                            <input type="hidden" name="ProductId" />
+                            <button href="/" type="submit" class="btn btn-primary ">
+                                Sepeti Onayla 
+                                <i class="fa fa-times fa-fw"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
             </table>
-        </div>
+        </div>     
+                          
     </div>
 </div>

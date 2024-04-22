@@ -21,7 +21,7 @@
                         {
                             <tr>
                                 <td>
-                                    <img src="/Images/@item.Product.Image" alt="" height="34" />
+                                    <img src="/Images/@item.Product.Image" alt="" class="img-thumbnail" style="max-height: 100px; max-width: 100px;" /> <!-- Fotoğrafların boyutunu belirleyerek aynı boyutta görünmelerini sağladık -->
                                 </td>
                                 <td>
                                     <a href="/Products/Detail/@item.Product.Id">
@@ -74,14 +74,14 @@
                         <form asp-action="RemoveFromCart">
                             <input type="hidden" name="ProductId" />
                             <button href="/" type="submit" class="btn btn-primary ">
-                                Sepeti Onayla 
+                                Sepeti Onayla
                                 <i class="fa fa-times fa-fw"></i>
                             </button>
                         </form>
                     </td>
                 </tr>
             </table>
-        </div>     
-                          
+        </div>
+
     </div>
 </div>

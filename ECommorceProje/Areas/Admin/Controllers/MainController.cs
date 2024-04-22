@@ -43,7 +43,7 @@ namespace ECommorceProje.Areas.Admin.Controllers
                     {
                         new Claim(ClaimTypes.Email, kullanici.Email),
                         new Claim(ClaimTypes.Name, kullanici.Name),
-                        new Claim(ClaimTypes.Role, kullanici.IsAdmin ? "Admin" : "Person")
+                        new Claim(ClaimTypes.Role, kullanici.IsAdmin ? "Admin" : "Personal")
                     };
                     var kullaniciKimligi = new ClaimsIdentity(haklar, "Login");
                     ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(kullaniciKimligi);

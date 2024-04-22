@@ -3,17 +3,26 @@ using Data;
 using Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Service;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Hizmetlere kontrolleri ekleyin.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
-builder.Services.AddAuthentication
-(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {
     x.LoginPath = "/Admin/Main/Login";
-}); // Çerez tabanlý kimlik doðrulama
+    x.AccessDeniedPath = "/AccessDenied";
+    x.Cookie.Name = "Account";
+    x.Cookie.MaxAge = TimeSpan.FromDays(1);
+    x.Cookie.IsEssential = true;
+});
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("AdminPolicy", policy => policy.RequireClaim(ClaimTypes.Role, "Admin", "SuperAdmin"));
+    x.AddPolicy("UserPolicy", policy => policy.RequireClaim(ClaimTypes.Role, "Admin", "SuperAdmin", "User", "Personal"));
+});
 builder.Services.AddDbContext<DatabaseContext>(); // Veritabaný iþlemleri için
 
 // Özel hizmetinizi kaydedin

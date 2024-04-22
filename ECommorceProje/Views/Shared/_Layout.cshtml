@@ -22,15 +22,15 @@
 
     @await RenderSectionAsync("style", required: false)
 </head>
-@await Html.PartialAsync("_PartialHeader")
-<body>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @Html.Raw(TempData["Mesaj"])
-            @RenderBody()
-        </main>
+<body>
+    @await Html.PartialAsync("_PartialHeader")
+    <div class="container body-content">
+        @Html.Raw(TempData["Mesaj"])
+        @RenderBody()
     </div>
+    @Html.Partial("_PartialFooter")
+    
     @await Html.PartialAsync("_PartialFooter")
     <script src="~/homepage/js/jquery-1.11.0.min.js"></script>
     <script src="~/homepage/js/modernizr.js"></script>

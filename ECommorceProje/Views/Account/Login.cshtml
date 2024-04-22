@@ -1,9 +1,9 @@
 ﻿@model Entities.LoginViewModel
-
+<body>
     <section class="container">
         <div class="login-container">
             <div class="circle circle-one"></div>
-            <div class="form-container" style="width: 150%;">
+            <div class="form-contanier style="width : 150%;">
                 <h1 class="opacity">Giriş Yap</h1>
                 <form asp-action="Login" asp-controller="Account" method="post">
                     <input asp-for="Email" type="email" placeholder="E-posta" />
@@ -19,7 +19,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="circle circle-two"></div>
         </div>
         <div class="theme-btn-container"></div>

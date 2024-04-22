@@ -11,7 +11,7 @@ using Service;
 
 namespace ECommorceProje.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize(Policy = "UserPolicy")]
     public class ProductsController : Controller
     {
         private readonly DatabaseContext _context;

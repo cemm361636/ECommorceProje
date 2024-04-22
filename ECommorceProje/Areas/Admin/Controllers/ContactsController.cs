@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Data;
 using Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECommorceProje.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize(Policy = "UserPolicy")]
     public class ContactsController : Controller
     {
         private readonly DatabaseContext _context;

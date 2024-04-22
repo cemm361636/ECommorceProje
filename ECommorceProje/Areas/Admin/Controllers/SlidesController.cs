@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommorceProje.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize(Policy = "UserPolicy")]
     public class SlidesController : Controller
     {
         private readonly DatabaseContext _context;

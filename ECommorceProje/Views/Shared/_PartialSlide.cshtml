@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Slide>
 
-<div id="carouselExampleCaptions" class="carousel slide">
+<div id="carouselExampleCaptions" class="carousel slide" style="padding: 20px;"> <!-- Sağdan, soldan, yukarıdan ve aşağıdan 20px boşluk bırakmak için padding stilini ekledik -->
 
     <div class="carousel-inner">
 
         @foreach (var item in Model)
         {
-            <div class="carousel-item @(item == Model.First() ? "active" : "")">
+            <div class="carousel-item @(item == Model.First() ? "active" : "")" style="margin: 10px;"> <!-- Sağdan, soldan, yukarıdan ve aşağıdan 10px boşluk bırakmak için margin stilini ekledik -->
                 <img src="/Images/@item.Image" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>@item.Title</h5>

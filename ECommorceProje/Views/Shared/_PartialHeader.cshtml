@@ -17,11 +17,9 @@
                                 <div class="item-anchor d-flex align-item-center" data-effect="Home">
                                     <a href="/">Ana Sayfa</a>
                                 </div>
-                            </li>
-                            
-                                @await Component.InvokeAsync("Categories")
-                           
-                            
+                            </li>                            
+                                @await Component.InvokeAsync("Categories")                                                   
+                          
                             <li>
                                 <div class="item-anchor" data-effect="About">
                                     <a href="/hakkimizda">Hakkımızda</a>
@@ -33,16 +31,16 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="text-end d-flex align-items-center">
+                                <div class="text-end d-flex items-center">
                                     <a asp-controller="Account" asp-action="Login">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span>Giriş Yap</span>
+                                        <span>Giriş-Çıkış Yap</span>
                                     </a>
-                                    <a asp-controller="Account" asp-action="Logout">
-                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                        <span>Çıkış Yap</span>
+                                    <a asp-controller="Account" asp-action="Register">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>Kayıt Ol</span>
                                     </a>
-                                </div>
+                                </div>                               
                             </li>
                             <li>
                                 <form asp-controller="Products" asp-action="Search" method="get" class="col-5 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">

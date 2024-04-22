@@ -28,8 +28,8 @@
     <div class="container body-content">
         @Html.Raw(TempData["Mesaj"])
         @RenderBody()
-    </div>
-    @Html.Partial("_PartialFooter")
+    </div>  
+   
     
     @await Html.PartialAsync("_PartialFooter")
     <script src="~/homepage/js/jquery-1.11.0.min.js"></script>

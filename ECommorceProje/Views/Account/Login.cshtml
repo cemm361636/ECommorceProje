@@ -1,13 +1,29 @@
-﻿@model Entities.LoginViewModel
+﻿@model Entities.LoginViewModel 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="~/glassmorphism-login/src/style.css" rel="stylesheet" />
+</head>
 <body>
+    <div class="col-lg-2 col-md-2">
+        <div class="main-logo">
+            <a href="/">
+                <img src="~/homepage/images/main-logo.png" />
+            </a>
+        </div>
+    </div>
+
     <section class="container">
         <div class="login-container">
             <div class="circle circle-one"></div>
-            <div class="form-contanier style="width : 150%;">
+            <div class="form-container" style="width: 150%;">
                 <h1 class="opacity">Giriş Yap</h1>
                 <form asp-action="Login" asp-controller="Account" method="post">
-                    <input asp-for="Email" type="email" placeholder="E-posta" />
-                    <input asp-for="Password" type="password" placeholder="Şifre" />
+                    <input asp-for="Email" type="email" placeholder="E-posta">
+                    <input asp-for="Password" type="password" placeholder="Şifre">
                     <button type="submit" class="opacity">Giriş Yap</button>
                 </form>
                 <div class="register-forget opacity">
@@ -18,11 +34,15 @@
                         <a href="">Şifremi Unuttum</a>
                     </div>
                 </div>
+                <div class="anasayfa-don-btn-wrapper text-center">
+                    <a href="/Home/Index" mt-3">Ana Sayfaya Dön</a>
+                </div>
+
             </div>
             <div class="circle circle-two"></div>
         </div>
         <div class="theme-btn-container"></div>
     </section>
+
 </body>
-<script src="~/glassmorphism-login/src/script.js"></script>
-<link href="~/glassmorphism-login/src/style.css" rel="stylesheet" />
+</html>

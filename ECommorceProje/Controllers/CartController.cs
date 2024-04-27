@@ -2,21 +2,55 @@
 using Microsoft.AspNetCore.Mvc;
 using ECommorceProje.ExtensionMethods;
 using Service;
+using ECommorceProje.Models;
 
 namespace ECommorceProje.Controllers
 {
     public class CartController : Controller
     {
         private readonly IService<Product> _productService;
+        private readonly IService<Order> _orderService;
 
-        public CartController(IService<Product> productService)
+        public CartController(IService<Product> productService, IService<Order> orderService)
         {
             _productService = productService;
+            _orderService = orderService;
         }
 
         public IActionResult Index()
         {
-            return View(GetCart()); // sepet sayfasına sepetteki ürünleri gönderiyoruz
+            var model = new CartViewModel();
+            model.Cart = GetCart();
+            return View(model); // sepet sayfasına sepetteki ürünleri gönderiyoruz
+        }
+        [HttpPost]
+        public IActionResult Index(CartViewModel cartViewModel)
+        {
+            cartViewModel.Cart = GetCart();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _orderService.Add(cartViewModel.Order);
+                    _orderService.Save();
+                    TempData["ordermessage"] = "<div class='alert alert-success'>Siparişiniz Alındı!</div>";
+                    HttpContext.Session.Remove("Cart");
+                    return RedirectToAction("OrderResult");
+                }
+                catch (Exception hata)
+                {
+                    ModelState.AddModelError("", "Hata Oluştu!");
+                }
+            }
+            return View(cartViewModel);
+        }
+        public IActionResult Order()
+        {
+            return View();
+        }
+        public IActionResult OrderResult()
+        {
+            return View();
         }
         public IActionResult AddToCart(int productId, int quantity = 1)
         {

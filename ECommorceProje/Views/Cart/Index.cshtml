@@ -1,4 +1,4 @@
-﻿@model Cart
+﻿@model CartViewModel
 @{
     ViewData["Title"] = "Sepetim";
 }
@@ -17,7 +17,7 @@
                         <th></th>
                     </tr>
                     <tbody>
-                        @foreach (var item in Model.Products)
+                        @foreach (var item in Model.Cart.Products)
                         {
                             <tr>
                                 <td>
@@ -53,35 +53,68 @@
             <table class="table">
                 <tr>
                     <th>Aratoplam</th>
-                    <td>@Model.TotalPrice().ToString("c")</td>
+                    <td>@Model.Cart.TotalPrice().ToString("c")</td>
                 </tr>
                 <tr>
                     <th>Kargo</th>
-                    <td>@(Model.TotalPrice() > 2000 ? "Ücretsiz" : "69₺")</td>
+                    <td>@(Model.Cart.TotalPrice() > 2000 ? "Ücretsiz" : "69₺")</td>
                 </tr>
                 <tr>
                     <th>
                         Sipariş Toplamı
                     </th>
                     <td>
-                        @(Model.TotalPrice() > 999 ? Model.TotalPrice().ToString("c") : (Model.TotalPrice() + 69).ToString("c"))
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-
-
-                        <form asp-action="RemoveFromCart">
-                            <input type="hidden" name="ProductId" />
-                            <button href="/" type="submit" class="btn btn-primary ">
-                                Sepeti Onayla
-                                <i class="fa fa-times fa-fw"></i>
-                            </button>
-                        </form>
+                        @(Model.Cart.TotalPrice() > 999 ? Model.Cart.TotalPrice().ToString("c") : (Model.Cart.TotalPrice() + 69).ToString("c"))
                     </td>
                 </tr>
             </table>
         </div>
-
     </div>
 </div>
+<h3>
+    Bilgilerinizi Giriniz
+</h3>
+<form asp-action="Index">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input asp-for="Order.OrderDetail" type="hidden" />
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Order.Name" class="control-label"></label>
+                <input asp-for="Order.Name" class="form-control" />
+                <span asp-validation-for="Order.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.Surname" class="control-label"></label>
+                <input asp-for="Order.Surname" class="form-control" />
+                <span asp-validation-for="Order.Surname" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Order.Email" class="control-label"></label>
+                <input asp-for="Order.Email" class="form-control" />
+                <span asp-validation-for="Order.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.Phone" class="control-label"></label>
+                <input asp-for="Order.Phone" class="form-control" />
+                <span asp-validation-for="Order.Phone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label asp-for="Order.Address" class="control-label"></label>
+                <textarea asp-for="Order.Address" class="form-control"></textarea>
+                <span asp-validation-for="Order.Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Siparişi Tamamla" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<script>
+    document.getElementById("Order_OrderDetail").value = document.getElementById("cart").innerHTML;
+</script>

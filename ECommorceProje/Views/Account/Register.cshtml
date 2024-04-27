@@ -3,7 +3,7 @@
     <section class="container">
         <div class="login-container">
             <div class="circle circle-one"></div>
-            <div class="form-container" style="width: 150%;">               
+            <div class="form-container" style="width: 200%;">               
                 <h1 class="opacity">Kayıt Ol</h1>
                 <form asp-action="Register" asp-controller="Account" method="post">
                     <input asp-for="FirstName" placeholder="Ad" />
@@ -16,6 +16,9 @@
                 <div class="register-forget opacity">
                     <a href="/Account/Login">Giriş Yap</a>
                     <a href="">Şifremi Unuttum</a>
+                </div>
+                <div class="anasayfa-don-btn-wrapper text-center">
+                    <a href="/Home/Index" >Ana Sayfaya Dön</a>
                 </div>
             </div>
             <div class="circle circle-two"></div>

@@ -18,8 +18,34 @@ namespace ECommorceProje.Areas.Admin.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            try
+            {
+                var products = await _context.Products.ToListAsync();
+                ViewBag.TotalProductCount = products.Count;
+
+                var users = await _context.Users.ToListAsync();
+                ViewBag.TotalUserCount = users.Count;
+
+                var slides = await _context.Slides.ToListAsync();
+                ViewBag.TotalSlideCount = slides.Count;
+
+                var categories = await _context.Categories.ToListAsync();
+                ViewBag.TotalCategoryCount = categories.Count;
+
+                // Her ürünün adını ve stok miktarını alıp ViewBag'e ekleyelim
+                var productStocks = new Dictionary<string, int>();
+                foreach (var product in products)
+                {
+                    productStocks.Add(product.Name, product.Stock);
+                }
+                ViewBag.ProductStocks = productStocks;
+            }
+            catch (Exception ex)
+            {
+
+            }
             return View();
         }
         [AllowAnonymous]
@@ -67,6 +93,7 @@ namespace ECommorceProje.Areas.Admin.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index");
         }
+
     }
 }
 

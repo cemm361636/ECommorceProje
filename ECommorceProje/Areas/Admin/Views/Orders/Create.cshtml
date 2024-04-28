@@ -1,9 +1,10 @@
-﻿@model Entities.User
+﻿@model Entities.Order
 
 @{
-    ViewData["Title"] = "Yeni Kullanıcı Ekle";
+    ViewData["Title"] = "Yeni Sipariş Ekle";
 }
-
+    
+<h4></h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -30,19 +31,14 @@
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAdmin" /> @Html.DisplayNameFor(model => model.IsAdmin)
-                </label>
+            <div class="form-group">
+                <label asp-for="OrderDetail" class="control-label"></label>
+                <input asp-for="OrderDetail" class="form-control" />
+                <span asp-validation-for="OrderDetail" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Ekle" class="btn btn-primary" />
@@ -54,3 +50,5 @@
 <div>
     <a asp-action="Index" class="btn btn-outline-success mt-3">Listeye Dön</a>
 </div>
+
+

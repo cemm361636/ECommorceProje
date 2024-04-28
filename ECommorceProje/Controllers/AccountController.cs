@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -59,6 +60,12 @@ namespace ECommorceProje.Controllers
                 }
             }
             return View(model);
+        }
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await HttpContext.SignOutAsync();
+
+            return RedirectToAction("Login", "Account");
         }
     }
 }

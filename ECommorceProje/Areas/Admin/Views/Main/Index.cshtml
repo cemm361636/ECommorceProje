@@ -1,5 +1,4 @@
 ﻿
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +7,9 @@
     <title>@ViewData["Title"]</title>
     <style>
         /* Genel stiller */
-        body{
-            font-family: Arial, sans-serif;
-            background-color: grey;
-            margin: 0;
-            padding: 0;
-            color: grey; /* Soft beyaz */
-        }
         body {
-
             font-family: Arial, sans-serif;
-            background-color: grey;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
@@ -27,7 +18,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #404040;
+            background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -50,7 +41,7 @@
         }
 
         th {
-            background-color: black;
+            background-color: #f2f2f2;
         }
 
         .dropdown {
@@ -132,7 +123,7 @@
                 <th>Toplam Adet</th>
             </tr>
             <tr>
-                <td>Ürün Sayısı</td>
+                <td>Ürün Miktar</td>
                 <td>@ViewBag.TotalProductCount</td>
             </tr>
             <tr>
@@ -147,20 +138,12 @@
                 <td>Kategori Sayısı</td>
                 <td>@ViewBag.TotalCategoryCount</td>
             </tr>
+            <tr>
+                <td>Sipariş Miktar</td>
+                <td>@ViewBag.TotalOrderCount</td>
+            </tr>
         </table>
 
-       
-    </div>
 
-    <script>
-        function toggleDropdown() {
-            var dropdownContent = document.getElementById("dropdownContent");
-            if (dropdownContent.style.display === "none") {
-                dropdownContent.style.display = "block";
-            } else {
-                dropdownContent.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>

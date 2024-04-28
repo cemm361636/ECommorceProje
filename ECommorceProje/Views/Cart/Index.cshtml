@@ -75,8 +75,12 @@
     Bilgilerinizi Giriniz
 </h3>
 <form asp-action="Index">
-    <div asp-validation-summary="All" class="text-danger"></div>
+    <!-- Doğrulama hatalarını göstermek için kullanılan bölüm -->
+    <!-- <div asp-validation-summary="All" class="text-danger"></div> -->
+    <!-- Gizli input alanı -->
     <input asp-for="Order.OrderDetail" type="hidden" />
+
+    <!-- Ürün bilgileri içeren form -->
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -117,4 +121,4 @@
 
 <script>
     document.getElementById("Order_OrderDetail").value = document.getElementById("cart").innerHTML;
-</script>
+</script> 

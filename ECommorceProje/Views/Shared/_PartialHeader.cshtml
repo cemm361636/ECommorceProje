@@ -1,5 +1,7 @@
 ﻿@using ECommorceProje.ExtensionMethods
-<header id="header">
+
+<header id="header">   
+
     <div id="header-wrap">
         <nav class="primary-nav padding-small">
             <div class="container">
@@ -39,23 +41,31 @@
                                     </a>
                                     <a asp-controller="Account" asp-action="Register">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span  style="line-height: 32px; color: black;" onmouseover="this.style.color='grey'" onmouseout="this.style.color='black'">Kayıt Ol</span>
+                                        <span style="line-height: 32px; color: black;" onmouseover="this.style.color='grey'" onmouseout="this.style.color='black'">Kayıt Ol</span>
                                     </a>
                                 </div>
                             </li>
 
-                            <!-- Sepet div'i -->
+                            <li class="nav-item dropdown" style="margin-left: 0px; margin-top: -6px;">
+                                <a class="nav-link dropdown-toggle show" id="navbarDropdown" href="@Url.Action("Index", "Profile")" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg class="svg-inline--fa fa-user fa-fw" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="" style="height: 20px;"><path fill="white" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: white;">
+                                    <li><a class="dropdown-item" href="#" style="color: white;">Profil</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout" style="color: white;">Çıkış</a></li>
+                                </ul>
+                            </li>
                             <li>
-                                <div class="dropdown" style="margin-top: -15px;">
+                                <div class="dropdown" style="margin-top: -13px;">
                                     @{
                                         Cart cart = Context.Session.GetJson<Cart>("Cart");
                                         if (cart != null)
                                         {
                                             <div class="btn-group">
-                                                <!-- Düğmelerin grubunu oluşturmak için -->
-                                                <a class="btn btn-light me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-cart-fill me-1" aria-hidden="true" style="font-size: 1rem;"></i> <!-- Sepet simgesine boyut ekle -->
-                                                    <span class="badge bg-dark text-white ms-1 rounded-pill" style="font-size: 1rem;">@cart.Products.Count</span> <!-- Sayıya boyut ekle -->
+                                             
+                                                <a class="btn btn-light me-2" href="@Url.Action("Index", "Cart")" role="button" aria-expanded="false">
+                                                    <i class="bi bi-cart-fill me-1" aria-hidden="true" style="font-size: 1rem;"></i>
+                                                    <span class="badge bg-dark text-white ms-1 rounded-pill" style="font-size: 1rem;">@cart.Products.Count</span> 
                                                 </a>
                                                 <ul class="dropdown-menu">
                                                     @foreach (var item in cart.Products)
@@ -74,25 +84,18 @@
                                         else
                                         {
                                             <a class="btn btn-light btn-sm me-2" href="/Cart">
-                                                <i class="bi bi-cart-fill me-1" aria-hidden="true" style="font-size: 1rem;"></i> <!-- Sepet simgesine boyut ekle -->
-                                                <span class="badge bg-primary text-white ms-1 rounded-pill" style="font-size: 0.7rem;">0</span> <!-- Sayıya boyut ekle -->
+                                                <i class="bi bi-cart-fill me-1" aria-hidden="true" style="font-size: 1.5rem;"></i>
+                                                <span class="badge bg-primary text-white ms-1 rounded-pill" style="font-size: 0.9rem;">0</span> 
                                             </a>
                                         }
                                     }
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown" style="margin-left: 0px; margin-top: -8px;">
-                                <a class="nav-link dropdown-toggle show" id="navbarDropdown" href="@Url.Action("Index", "Profile")" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <svg class="svg-inline--fa fa-user fa-fw" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="" style="height: 20px;"><path fill="white" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg>
+                            <form asp-controller="Products" asp-action="Search" method="get" class="form-inline col-12 col-lg-auto mb-3 mb-lg-0 me-lg-2" role="search">
 
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: white;">
-                                    <li><a class="dropdown-item" href="#" style="color: white;">Profil</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout" style="color: white;">Çıkış</a></li>
-                                </ul>
-                            </li>
-
+                                <input name="q" type="search" class="form-control form-control-dark" placeholder="Ara..." aria-label="Search" style="height: 25px; margin-top: 18px;">
+                            </form>
                         </ul>
                     </div>
                     <hr />

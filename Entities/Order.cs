@@ -20,5 +20,12 @@ namespace Entities
         public string OrderDetail { get; set; }
         [Display(Name = "Sipariş Tarihi"), ScaffoldColumn(false)]
         public DateTime? CreateDate { get; set; } = DateTime.Now;
+
+        [Display(Name = "CVV"), StringLength(3), Required]
+        public string CVV { get; set; }
+        [Display(Name = "Kart Numarası"), StringLength(16), Required]
+        public string CardNo { get; set; }
+
+
     }
 }

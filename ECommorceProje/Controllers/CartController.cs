@@ -44,13 +44,24 @@ namespace ECommorceProje.Controllers
             }
             return View(cartViewModel);
         }
-        public IActionResult Order()
+        public IActionResult OrderResult(CartViewModel cartViewModel)
         {
-            return View();
-        }
-        public IActionResult OrderResult()
-        {
-            return View();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _orderService.Add(cartViewModel.Order);
+                    _orderService.Save();
+                    TempData["ordermessage"] = "<div class='alert alert-success'>Siparişiniz Alındı!</div>";
+                    HttpContext.Session.Remove("Cart");
+                    return RedirectToAction("OrderResult");
+                }
+                catch (Exception hata)
+                {
+                    ModelState.AddModelError("", "Hata Oluştu!");
+                }
+            }
+            return View(cartViewModel);
         }
         public IActionResult AddToCart(int productId, int quantity = 1)
         {

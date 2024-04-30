@@ -2,8 +2,8 @@
 
 <style>
     .standart-resim {
-        width: 200px; /* Örnek olarak 300 piksel genişlik belirle */
-        height: 200px; /* Genişlik oranına göre otomatik yükseklik belirle */
+        width: 200px; 
+        height: 200px; 
     }
 </style>
 
@@ -26,7 +26,7 @@
                         <div class="cart-button">
                             <form asp-controller="Cart" asp-action="AddToCart" method="post">
                                 <input type="hidden" name="productId" value="@item.Id" />
-                                <button type="submit" class="btn btn-small btn-black">
+                                <button type="submit" class="btn btn-small">
                                     Sepete Ekle
                                     <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
                                 </button>

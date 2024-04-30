@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<Entities.Order>
 
 @{
-    ViewData["Title"] = "Siparişler";
+    ViewData["Title"] = "Sipariş Bilgileri";
 }
 
+
+
+
 <p>
-    <a class="btn btn-outline-primary" asp-action="Create">Yeni Ekle</a>
+    <a asp-action="Create" class="btn btn-outline-primary">Yeni Ekle</a>
 </p>
 <table class="table">
     <thead>
@@ -26,38 +29,51 @@
                 @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.CardNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CVV)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.OrderDetail)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDetail)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td class="text-truncate">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CVV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDetail)
+                </td>
+                <td>
                     <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
                     <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Detay</a> |
                     <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
                 </td>
-        </tr>
-}
+            </tr>
+        }
     </tbody>
 </table>

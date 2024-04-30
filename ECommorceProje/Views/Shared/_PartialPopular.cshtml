@@ -21,10 +21,21 @@
                     <h3 class="product-title">
                         <a href="/Products/Detail/@item.Id">@item.Name</a>
                     </h3>
-                    <span class ="text-body-secondary">@item.Price</span>
+                    <span class="text-body-secondary price-link" onclick="redirectToDetail('@item.Id')" style="cursor: pointer;">@item.Price</span>
                 </div>
-
             </div>
         </div>
     </a>
 }
+
+<script>
+    function redirectToDetail(productId) {
+        window.location.href = "/Products/Detail/" + productId;
+    }
+</script>
+
+<style>
+    .price-link:hover {
+        color: seashell ;
+    }
+</style>

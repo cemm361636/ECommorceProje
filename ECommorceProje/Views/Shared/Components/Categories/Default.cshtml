@@ -5,13 +5,11 @@
     <a class="nav-link px-2 link-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Kategoriler
     </a>
-
     <ul class="dropdown-menu">
         @foreach (var item in Model.Where (x => x.IsActive))
         {
             <li><a class="dropdown-item" href="/Categories/Index/@item.Id">@item.Name</a></li>
-        }
-        
+        }    
         
     </ul>
 </li>

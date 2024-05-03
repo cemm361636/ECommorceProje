@@ -276,7 +276,7 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 4, 30, 14, 29, 12, 537, DateTimeKind.Local).AddTicks(801),
+                            CreateDate = new DateTime(2024, 5, 3, 18, 43, 15, 564, DateTimeKind.Local).AddTicks(7178),
                             Email = "admin@ecommerce.com.net",
                             IsActive = true,
                             IsAdmin = true,
